@@ -10,7 +10,7 @@ Criar uma aplicação Mobile e Api com segurança, autenticação e CRUD para es
 
 1. Clone o repositório com `https://github.com/Samuel-Rodrigues/fortbrasil.git`
 2. Entre dentro da pasta do projeto com `FortBrasil-mobile`
-3. Instale todas as dependencias com o comando `yarn`
+3. Instale todas as dependencias com o comando `yarn` e `cd ios; pod install; cd ..`
 4. Digite `react-native run-ios` ou `react-native run-android`  para rodar o projeto
 
 ## :hammer: Ferramentas usadas
