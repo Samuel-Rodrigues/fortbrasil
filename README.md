@@ -44,4 +44,3 @@ Criar uma aplicação Mobile com autenticação e CRUD para estabelecimentos. Mo
 - 📄 **Yup** - Validacão de objetos 
 - 📄 **JSON Web Token** Para trabalhar com token
 - 📄 **Sucrase** Permite usar Import e export na aplicação.
-- ⚛️ **Nodemon** - Reiniciando automaticamente o aplicativo
