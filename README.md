@@ -4,7 +4,7 @@
 
 ## :rocket: Sobre o desafio
 
-Criar uma aplicação Mobile com autenticação e CRUD para estabelecimentos. Mostrar os estabelecimentos próximos 
+Criar uma aplicação Mobile e Api com segurança, autenticação e CRUD para estabelecimentos. Mostrar os estabelecimentos próximos 
 
 ## :clipboard: Iniciando a aplicação Mobile (React-native)
 
@@ -35,6 +35,7 @@ Criar uma aplicação Mobile com autenticação e CRUD para estabelecimentos. Mo
 2. Entre dentro da pasta do projeto com `FortBrasil-api`
 3. Instale todas as dependencias com o comando `yarn`
 4. Digite `yarn dev` ou `yarn dev:debug` `DEGUB =D`  para rodar o projeto
+5. Foi utilizado Banco Postgres
 
 ## :hammer: Ferramentas usadas
 
