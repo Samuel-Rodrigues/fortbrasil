@@ -57,7 +57,7 @@ class Form extends Component {
   }
 
   delete() {
-    this.props.delete(this.props.values.id);
+    this.props.delete(this.props.itemUpdate);
   }
 
   handleUpdate() {
@@ -87,11 +87,10 @@ class Form extends Component {
     this.setState({isSubmitting: true, msgSuccess: false, msgError: ''});
     var {name, street, city, number, burgh} = this.props.values;
 
+    var establishment = {};
     Geocoder.init(this.props.apikey, {language: 'pt'});
     Geocoder.from(`${street}, ${number} - ${burgh} ${city}`)
       .then(async json => {
-        var establishment = {};
-
         var location = json.results[0].geometry.location;
         this.props.values.location = location;
 
@@ -105,30 +104,8 @@ class Form extends Component {
           longitude: location.lng,
         };
 
-        const token = await AsyncStorage.getItem('token');
-        const headers = {
-          Authorization: `Bearer ${token}`,
-        };
-
-        api
-          .post('/establishments', establishment, {
-            headers,
-          })
-          .then(async response => {
-            console.log(response.status);
-            this.setState({msgSuccess: true, isSubmitting: false});
-            await this.props.getList();
-            return response;
-          })
-          .catch(err => {
-            console.log(err);
-            this.setState({msgSuccess: false});
-            this.setState({
-              msgError: 'Já existe local com esse nome',
-              isSubmitting: false,
-            });
-            return err;
-          });
+        this.props.add(establishment);
+        this.setState({msgSuccess: true, isSubmitting: false});
       })
       .catch(err => {
         this.props.values.error = 'Endereço não existe';

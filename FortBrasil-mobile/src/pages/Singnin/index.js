@@ -48,8 +48,8 @@ class Singnin extends Component {
   state = {
     isLoading: '',
     token: '',
-    email: '',
-    password: '',
+    email: 'samuel22@gmail.com',
+    password: '123456',
     errMsg: '',
   };
 
@@ -131,6 +131,13 @@ class Singnin extends Component {
               navigation.navigate('SingnUp');
             }}>
             <SingLinkText>Criar conta gratuita</SingLinkText>
+          </SingLink>
+          <SingLink
+            type="submit"
+            onPress={() => {
+              navigation.navigate('ListEstablishments');
+            }}>
+            <SingLinkText>Lista de estabelecimentos</SingLinkText>
           </SingLink>
         </Container>
       </Background>

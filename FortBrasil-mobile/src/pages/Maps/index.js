@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Modal from 'react-native-modal';
 import Form from '../../components/Form/index';
+import * as Toast from '../../components/Toast/index';
+import {connect} from 'react-redux';
+import * as EstablishmentActions from '../../store/modules/establishment/actions';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {
@@ -18,27 +21,28 @@ import {getToken} from '../../services/auth';
 
 class Maps extends Component {
   async componentDidMount() {
+    Toast.loading(true);
     await this.getList();
     await this.authUser();
+    Toast.loading(false);
+
+    Toast.info('Estabelecimentos carregados');
   }
 
-  handleDelete = async id => {
-    const token = await getToken();
+  handleSetAllEstablishment = establishments => {
+    const {dispatch} = this.props;
+    dispatch(EstablishmentActions.setEstablishment(establishments));
+  };
 
-    const headers = {
-      Authorization: `Bearer ${token}`,
-    };
+  handleAddEstablishment = establishment => {
+    const {dispatch} = this.props;
+    dispatch(EstablishmentActions.addStablishmentRequest(establishment));
+  };
 
-    await api
-      .delete(`/establishments/${id}`, {
-        headers,
-      })
-      .then(async res => {
-        console.log(res.data);
-        await this.getList();
-        this.toggleModal();
-      });
-    await this.getList();
+  handleDelete = async establishment => {
+    const {dispatch} = this.props;
+    dispatch(EstablishmentActions.deleteStablishmentRequest(establishment));
+    this.toggleModal();
   };
 
   async authUser() {
@@ -78,12 +82,9 @@ class Maps extends Component {
       Authorization: `Bearer ${token}`,
     };
 
-    await api.get('/establishments', {headers}).then(res => {
-      const establishmentsList = res.data;
-      this.setState({
-        establishments: establishmentsList,
-      });
-    });
+    const response = await api.get('/establishments', {headers});
+
+    this.handleSetAllEstablishment(response.data);
   };
 
   setCreate() {
@@ -107,7 +108,6 @@ class Maps extends Component {
     headers: '',
     isCreate: false,
     establishmentUpdate: null,
-    establishments: [],
     apikey: 'AIzaSyC7rk__5hEwhpaGeAfPYNHJSDJ9lAPKW4c',
     initialRegion: {
       latitude: -3.7497319,
@@ -118,8 +118,8 @@ class Maps extends Component {
 
   render() {
     const {latitude, longitude} = this.state.initialRegion;
-    const {apikey, establishments, establishmentUpdate} = this.state;
-
+    const {apikey, establishmentUpdate} = this.state;
+    const {listEstablishments} = this.props;
     return (
       <>
         <MapView
@@ -130,7 +130,7 @@ class Maps extends Component {
             latitudeDelta: 0.0042,
             longitudeDelta: 0.092,
           }}>
-          {establishments.map(establishment => {
+          {listEstablishments.map(establishment => {
             return (
               <Marker
                 key={establishment.id}
@@ -156,7 +156,6 @@ class Maps extends Component {
                   }}>
                   <ContainerCallout>
                     <TextCallout>{establishment.name}</TextCallout>
-
                     <AddressCallout>
                       {establishment.street}, {establishment.number}
                     </AddressCallout>
@@ -186,6 +185,7 @@ class Maps extends Component {
         <Modal isVisible={this.state.isModalVisible}>
           <View>
             <Form
+              add={this.handleAddEstablishment}
               delete={this.handleDelete}
               upload={this.upload}
               isCreate={this.state.isCreate}
@@ -202,4 +202,8 @@ class Maps extends Component {
   }
 }
 
-export default Maps;
+const mapStateToProps = state => ({
+  listEstablishments: state.establishment || [],
+});
+
+export default connect(mapStateToProps)(Maps);
