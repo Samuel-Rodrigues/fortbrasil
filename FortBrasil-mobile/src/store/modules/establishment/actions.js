@@ -32,3 +32,19 @@ export function deleteStablishmentSuccess(establishment) {
     establishment,
   };
 }
+
+export function updateStablishmentRequest(establishment, updateEstablishment) {
+  return {
+    type: 'UPDATE_ESTABLISHMENT/REQUEST',
+    establishment,
+    updateEstablishment,
+  };
+}
+
+export function updateStablishmentSuccess(establishment, updateEstablishment) {
+  return {
+    type: 'UPDATE_ESTABLISHMENT/SUCCESS',
+    establishment,
+    updateEstablishment,
+  };
+}

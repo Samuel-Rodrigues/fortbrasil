@@ -22,13 +22,24 @@ class Form extends Component {
     super(props);
 
     if (this.props.itemUpdate) {
-      const {id, name, street, number, burgh, city} = this.props.itemUpdate;
+      const {
+        id,
+        name,
+        street,
+        number,
+        burgh,
+        city,
+        latitude,
+        longitude,
+      } = this.props.itemUpdate;
       this.props.values.id = id;
       this.props.values.name = name;
       this.props.values.street = street;
       this.props.values.number = String(number);
       this.props.values.burgh = burgh;
       this.props.values.city = city;
+      this.props.values.latitude = latitude;
+      this.props.values.longitude = longitude;
 
       console.log(this.props.isCreate);
     }
@@ -62,7 +73,16 @@ class Form extends Component {
 
   handleUpdate() {
     this.setState({isSubmitting: true, msgSuccess: false, msgError: ''});
-    var {id, name, street, city, number, burgh} = this.props.values;
+    var {
+      id,
+      name,
+      street,
+      city,
+      number,
+      burgh,
+      latitude,
+      longitude,
+    } = this.props.values;
     if (!name || !street || !city || !number || !burgh) {
       this.setState({
         msgError: 'Existe um campo vazio',
@@ -70,17 +90,19 @@ class Form extends Component {
       });
       return;
     }
-    var establishment = {};
-    establishment = {
+    var updateEstablishment = {};
+    updateEstablishment = {
       id,
       name,
       street,
       number,
       burgh,
       city,
+      latitude,
+      longitude,
     };
 
-    this.props.upload(establishment);
+    this.props.upload(this.props.itemUpdate, updateEstablishment);
   }
 
   async handleAdd() {
@@ -191,6 +213,8 @@ export default withFormik({
     number: '',
     burgh: '',
     city: '',
+    latitude: '',
+    longitude: '',
   }),
   values: {},
 })(Form);
