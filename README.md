@@ -42,5 +42,5 @@ Criar uma aplicação Mobile e Api com segurança, autenticação e CRUD para es
 - ⚛️ **Nodemon** - Reiniciando automaticamente o aplicativo
 - 📄 **Sequelize** - ORM
 - 📄 **Yup** - Validacão de objetos 
-- 📄 **JSON Web Token** Para trabalhar com token
+- 📄 **JSON Web Token** Para trabalhar autenticaçao JWT
 - 📄 **Sucrase** Permite usar Import e export na aplicação.
