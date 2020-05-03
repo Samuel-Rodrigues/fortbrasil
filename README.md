@@ -1,5 +1,5 @@
 <h3 align="center">
-  Esse projeto faz parte de um teste para empresa FortBrasil
+  Feito com ❤️ para FortBrasil
 </h3>
 
 ## :rocket: Sobre o desafio
