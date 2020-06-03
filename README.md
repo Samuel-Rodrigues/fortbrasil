@@ -2,6 +2,10 @@
   Feito com ❤️ para FortBrasil
 </h3>
 
+## :camera: Demonstração
+<h1 align="center"> <img alt="resultado" src="https://github.com/Samuel-Rodrigues/fortbrasil/blob/master/fortBrasil.gif"/>
+</h1>
+
 ## :rocket: Sobre o desafio
 
 Criar uma aplicação Mobile e Api com segurança, autenticação e CRUD para estabelecimentos. Mostrar os estabelecimentos próximos 
@@ -23,8 +27,6 @@ Criar uma aplicação Mobile e Api com segurança, autenticação e CRUD para es
 - 📄 **Maps** Bibioteca para utlizar o maps do dispositivo
 ... entre outras.
 
-## :camera: Demonstração
-<h1 align="center"> <img alt="resultado" src="https://github.com/Samuel-Rodrigues/fortbrasil/blob/master/fortBrasil.gif"/>
 </h1>
 
 ## :clipboard: Iniciando a Api (Node) 
