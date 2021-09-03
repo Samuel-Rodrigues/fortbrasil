@@ -18,7 +18,7 @@
     "axios": "^0.19.2",
     "formik": "^2.1.4",
     "geolib": "^3.2.1",
-    "immer": "^6.0.2",
+    "immer": "^9.0.6",
     "react": "16.9.0",
     "react-native": "0.61.2",
     "react-native-geocoding": "^0.4.0",
