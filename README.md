@@ -1,7 +1,3 @@
-<h3 align="center">
-  Feito com ❤️ para FortBrasil
-</h3>
-
 ## :camera: Demonstração
 <h1 align="center"> <img alt="resultado" src="https://github.com/Samuel-Rodrigues/fortbrasil/blob/master/fortBrasil.gif"/>
 </h1>
